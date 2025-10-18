@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSB/Home</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="brand" href="/">SSB</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link active">Home</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Welcome to SSB</h1>
+        <p class="lead">
+          A tiny demo site showing a shared navigation, simple layout, and
+          responsive CSS.
+        </p>
+        <p>
+          Use the links above to navigate. This site is served by a minimal
+          Node.js static server.
+        </p>
+      </section>
+
+      <section class="features">
+        <article>
+          <h2>Fast</h2>
+          <p>Lightweight static pages served quickly with Node.js.</p>
+        </article>
+        <article>
+          <h2>Simple</h2>
+          <p>
+            Clean HTML structure and a small CSS file for easy customization.
+          </p>
+        </article>
+        <article>
+          <h2>Responsive</h2>
+          <p>Navbar collapses on narrow screens and the layout adapts.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© SSB — Demo site</div>
+    </footer>
+
+    <script>
+      // simple nav toggle for small screens
+      const btn = document.querySelector(".nav-toggle");
+      const list = document.querySelector(".nav-list");
+      btn &&
+        btn.addEventListener("click", () => {
+          list.classList.toggle("open");
+        });
+    </script>
+  </body>
+</html>

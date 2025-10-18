@@ -1,0 +1,29 @@
+require fs +
+add a file path +
+
+make all command handler (add,list,remove) +
+
+fetch the command from user using process.argv +
+
+create load task functionality +
+    use try catch to read the file from path delcare in first +
+    read the file sync using readFileSync +
+    data receive in dataBuffer format convert into in string +
+    after that data is in dataJson format +
+    convert it into normal json using JSON.parse +
+
+create a save task functionality +
+    convert task into string using JSON.stringfy +
+    use fs.writeSync to write data in file +
+
+create a display task functionality +
+    load the task +
+    print all tasks using loop +
+
+create a remove task functionality
+
+
+add task :-
+    load task 
+    push new task give in parameter
+    then save the task

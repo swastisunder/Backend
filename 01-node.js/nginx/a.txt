@@ -1,0 +1,76 @@
+START
+
+1. Load the modules you need:
+   - http → lets your computer act like a web server
+   - fs   → lets your computer read files (like HTML, CSS, JS)
+   - path → helps to build file paths in a safe way
+
+2. Decide on a port number
+   - A port is like a door on your computer
+   - Common choice: 8080
+   - Later you access your server in browser using: http://localhost:8080
+
+3. Create the server
+   - Think of this as “when someone knocks on your door (sends a request), do this”
+
+4. When a request comes in, do the following:
+
+   STEP A: Figure out which file the user wants
+     - Look at the URL the user requested (req.url)
+         Examples:
+            "/" → homepage
+            "/about" → about page
+            "/style.css" → CSS file
+     - If the URL is "/", choose "index.html" as the default
+     - Else, check if the URL already has an extension:
+         - Extensions are endings like .html, .css, .js
+         - If it has no extension, add ".html" at the end
+     - Combine this file name with your project folder path to get the full file path
+
+   STEP B: Find out the type of file
+     - The browser needs to know what kind of file it is
+     - Check the file extension:
+         - .html → HTML page
+         - .css  → CSS file
+         - .js   → JavaScript file
+         - Unknown → just send as “binary” (application/octet-stream)
+     - Set the correct Content-Type header so the browser knows how to use it
+
+   STEP C: Read the file from your computer
+     - Use fs module to read the file
+     - Check if reading worked:
+         - If file is found:
+             - Send a response to the browser with status 200 (OK)
+             - Include the file content
+         - If file is NOT found (error code ENOENT):
+             - Send a response with status 404 (Not Found)
+             - Show message: “404: File not found”
+         - If any other error happens:
+             - Send a response with status 500 (Server Error)
+             - Show the error message
+
+5. Start listening for requests
+   - Tell your server to listen on the chosen port (e.g., 8080)
+   - Print a message in console: "Server is running on http://localhost:8080"
+
+6. Test your server
+   - Open a web browser
+   - Visit http://localhost:8080 → should load index.html
+   - Visit http://localhost:8080/about → should load about.html (if exists)
+   - Visit http://localhost:8080/style.css → should load your CSS file
+   - Visit a URL that does NOT exist → should show 404 message
+
+7. Extra Tips for Beginners:
+   - Always put your HTML, CSS, and JS files in the same folder as your server.js for now
+   - Log every request in console to see which file is being requested
+   - Only serve files that exist in your project folder to avoid security risks
+   - You can later organize files in subfolders like "css/", "js/", "images/" and update paths accordingly
+
+8. Optional Future Improvements:
+   - Add more file types (images, fonts)
+   - Add caching headers for faster loading
+   - Show a custom 404.html page instead of just text
+   - Add compression for faster loading of large files
+   - Use Express.js later for a more powerful server
+
+END

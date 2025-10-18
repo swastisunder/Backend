@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSB/Contact</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      /* styles.css - simple responsive nav + layout for SSB demo */
+      :root {
+        --bg: #f7f8fb;
+        --card: #fff;
+        --accent: #2b6cb0;
+        --muted: #6b7280;
+        --maxw: 1000px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: #0f172a;
+        line-height: 1.5;
+      }
+      .container {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      .site-header {
+        background: linear-gradient(90deg, #fff 0, #fff0);
+        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.05);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+      }
+      .brand {
+        font-weight: 700;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
+      .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 0.5rem;
+      }
+      .nav-link {
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        color: var(--muted);
+        text-decoration: none;
+        border-radius: 6px;
+      }
+      .nav-link:hover {
+        background: rgba(43, 108, 176, 0.08);
+        color: var(--accent);
+      }
+      .nav-link.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .nav-toggle {
+        display: none;
+        background: transparent;
+        border: 0;
+        font-size: 1.2rem;
+      }
+      .hero {
+        padding: 2rem 0;
+        text-align: center;
+      }
+      .hero .lead {
+        color: var(--muted);
+        max-width: 60ch;
+        margin: 0.5rem auto;
+      }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+      .features article {
+        background: var(--card);
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(11, 15, 30, 0.03);
+      }
+      .page {
+        padding: 1rem 0;
+      }
+      .profile {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      .avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #e9f2ff, #fff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+      }
+      .site-footer {
+        padding: 1rem 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .contact-form {
+        display: grid;
+        gap: 0.75rem;
+        max-width: 640px;
+      }
+      .contact-form label {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.95rem;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        padding: 0.6rem 0.75rem;
+        border-radius: 8px;
+        border: 1px solid #e6e9ef;
+        background: #fff;
+      }
+      .contact-form button {
+        align-self: start;
+        background: var(--accent);
+        color: #fff;
+        border: 0;
+        padding: 0.6rem 0.9rem;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      /* responsive */
+      @media (max-width: 800px) {
+        .features {
+          grid-template-columns: 1fr;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .nav-list {
+          position: absolute;
+          right: 1rem;
+          top: 56px;
+          background: var(--card);
+          flex-direction: column;
+          padding: 0.5rem;
+          border-radius: 8px;
+          box-shadow: 0 8px 24px rgba(11, 15, 30, 0.08);
+          display: none;
+        }
+        .nav-list.open {
+          display: flex;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          padding: 1.25rem 0;
+        }
+        .brand {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="brand" href="/">SSB</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/contact" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="page contact-page">
+        <h1>Contact Us</h1>
+        <p>
+          If you have questions or feedback, send us a message using the form
+          below.
+        </p>
+
+        <form class="contact-form" action="/" method="post">
+          <label>
+            Name
+            <input type="text" name="name" placeholder="Your name" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" />
+          </label>
+          <label>
+            Message
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Write your message..."
+            ></textarea>
+          </label>
+          <button type="submit">Send message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© SSB — Demo site</div>
+    </footer>
+
+    <script>
+      const btn = document.querySelector(".nav-toggle");
+      const list = document.querySelector(".nav-list");
+      btn && btn.addEventListener("click", () => list.classList.toggle("open"));
+    </script>
+  </body>
+</html>

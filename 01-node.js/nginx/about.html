@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSB/About</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="brand" href="/">SSB</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/about" class="nav-link active">About</a></li>
+          <li><a href="/contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="page">
+        <h1>About SSB</h1>
+        <p>
+          This is a sample About page. Replace this text with your project's description,
+          mission statement, or team information. The layout is intentionally simple so it's
+          easy to adapt.
+        </p>
+
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">👤</div>
+          <div>
+            <h3>Our Story</h3>
+            <p>
+              SSB started as a tiny demo to show how to serve static pages with Node.js.
+              It's a good starting point for prototypes and learning.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© SSB — Demo site</div>
+    </footer>
+
+    <script>
+      const btn = document.querySelector('.nav-toggle');
+      const list = document.querySelector('.nav-list');
+      btn && btn.addEventListener('click', () => list.classList.toggle('open'));
+    </script>
+  </body>
+</html>
