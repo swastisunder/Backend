@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= user.username %> • Instagram</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #000;
+        margin: 0;
+        padding: 20px;
+        color: #fff;
+      }
+      .profile {
+        background: #111;
+        padding: 25px;
+        border-radius: 18px;
+        max-width: 520px;
+        margin: auto;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      }
+      .top-block {
+        background: #181818;
+        padding: 22px;
+        border-radius: 15px;
+        margin-bottom: 18px;
+      }
+      .stats {
+        display: flex;
+        justify-content: space-between;
+        background: #181818;
+        padding: 18px;
+        border-radius: 15px;
+      }
+      .stat {
+        text-align: center;
+        font-size: 15px;
+        opacity: 0.9;
+      }
+      .stat strong {
+        font-size: 20px;
+        display: block;
+        margin-bottom: 4px;
+        opacity: 1;
+      }
+      .username {
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+      p {
+        opacity: 0.85;
+        margin-top: 8px;
+        font-size: 15px;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile">
+      <div class="top-block">
+        <div class="username"><%= user.username %></div>
+        <p><%= user.bio %></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong><%= user.posts.length %></strong>Posts</div>
+        <div class="stat"><strong><%= user.followers %></strong>Followers</div>
+        <div class="stat"><strong><%= user.following %></strong>Following</div>
+      </div>
+    </div>
+  </body>
+</html>
