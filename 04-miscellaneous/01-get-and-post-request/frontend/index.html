@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #121212;
+        color: #ffffff;
+      }
+      .main {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+      }
+      .get,
+      .post {
+        border: 2px solid #333;
+        padding: 25px;
+        border-radius: 12px;
+        background-color: #1e1e1e;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+      input {
+        display: block;
+        margin: 12px 0;
+        padding: 12px;
+        width: 220px;
+        background-color: #2a2a2a;
+        border: 1px solid #404040;
+        color: #ffffff;
+        border-radius: 6px;
+      }
+      input::placeholder {
+        color: #666;
+      }
+      button {
+        padding: 12px 24px;
+        cursor: pointer;
+        background-color: #2d5a7c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: #366b94;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="get">
+        <h2>GET Request</h2>
+        <form method="get" action="http://localhost:8080/reg">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+          />
+          <input
+            type="password"
+            name="pass"
+            id="pass"
+            placeholder="Enter your password"
+          />
+          <button>Login</button>
+        </form>
+      </div>
+      <div class="post">
+        <h2>POST Request</h2>
+        <form method="post" action="http://localhost:8080/reg">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+          />
+          <input
+            type="password"
+            name="pass"
+            id="pass"
+            placeholder="Enter your password"
+          />
+          <button>Login</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

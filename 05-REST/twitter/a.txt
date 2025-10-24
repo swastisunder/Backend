@@ -1,0 +1,71 @@
+require express,path
+create app and port
+listen to port
+create public and views folder
+set view engine to ejs in app
+set views folder using path.join
+use public folder using express.static and path.join
+use express.urlencoded {extended:true} in app
+create a route to root path and send a res server working well
+
+
+create a local array to store posts like:-
+    [
+        {
+            id:"aksdufjhb=-516354fslljgusfb"
+            username:"ssb",
+            content:"i love coding"
+        }
+    ]
+
+latter i want to store in localstroage
+
+1. show posts:- 
+create a index.ejs in views folder get the posts which is send in the path and using loop print all the posts
+create a resourese path like '/posts' and render the index.ejs file and send the local array in parameter
+
+2. add posts:- 
+we have to create 2 paths:-
+    1. to show the form (/posts/new)
+    2. when submit the form then add in array using post method (/posts)
+
+    1. create a form new.ejs to get data from users
+        create a route /posts/new which render new.ejs
+    2. when the from is submit then send a post req to server (/posts)
+        extract the data using req.body and push in local array
+        after submiting the data redirect to root path using res.redirect
+
+    3. add a "add posts" button in index.ejs using a tag 
+
+3. display a perticular post
+create a new path (/posts/:id)
+fetch the id using req.params
+find the perticular id using find method
+create show.ejs file and send data using (/posts/:id) path display the data
+add show in detailed button in all the post in index.ejs using a tag
+in new posts there is not id 
+use uuid 
+and when add a new post then push uuid in array
+
+4. update
+create a new route to update the form (/posts/:id/edit)
+add edit button in all posts in index.ejs
+show edit.ejs
+in html we can't send patch request
+so use method-override package to update (patch) req
+then send the req using method-override 1
+
+create a patch router (/posts/:id)
+get the id using req.params
+get the new content
+find the post in array using find
+then change the old content to new content
+then redirect to root path
+
+5. delete
+add delete button to all posts in index.ejs add delete button inside a form action to "/posts/id?_method=DELETE"
+
+create a delete route (/posts/:id)
+fetch id using req.params
+filter the post using filter method (p.id !== id) and save the posts in posts array
+then redirect to root page

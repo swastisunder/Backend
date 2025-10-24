@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add New Post</title>
+    <link rel="stylesheet" href="/styles/posts.css" />
+  </head>
+  <body>
+    <h1 class="heading">Add New Post</h1>
+
+    <div class="form-container">
+      <form id="new-post-form" action="/posts" method="POST">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter username"
+        />
+
+        <label for="content">Content</label>
+        <textarea
+          id="content"
+          name="content"
+          rows="4"
+          placeholder="Write something..."
+        ></textarea>
+
+        <button type="submit" class="submit-btn">Add Post</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Posts</title>
+    <link rel="stylesheet" href="/styles/posts.css" />
+  </head>
+  <body>
+    <h1 class="heading">All Posts</h1>
+
+    <div class="posts-container">
+      <% posts.forEach(post => { %>
+      <div class="card">
+        <h3><%= post.username %></h3>
+        <p><%= post.content %></p>
+
+        <div class="btn-group">
+          <a href="#" class="show-btn">Show</a>
+          <a href="#" class="edit-btn">Edit</a>
+          <a href="#" class="delete">Delete</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <!-- Floating Add Button -->
+
+    <a href="/posts/new" title="Add Post" class="add-btn">+</a>
+  </body>
+</html>
