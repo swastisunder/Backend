@@ -24,8 +24,28 @@ let posts = [
   },
 ];
 
+app.delete("/posts/:id", (req, res) => {
+  const { id } = req.params;
+  posts = posts.filter((p) => p.id !== id);
+  res.redirect("/posts");
+});
+
 app.get("/posts", (req, res) => {
   res.render("index.ejs", { posts });
+});
+
+app.get("/posts/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+app.get("/posts/:id", (req, res) => {
+  const { id } = req.params;
+  const post = posts.find((p) => p.id === id);
+  if (post) {
+    res.render("show.ejs", { post });
+  } else {
+    res.render("error.ejs", { error: "Post not found" });
+  }
 });
 
 app.post("/posts", (req, res) => {
@@ -34,8 +54,26 @@ app.post("/posts", (req, res) => {
   res.redirect("/posts");
 });
 
-app.get("/posts/new", (req, res) => {
-  res.render("new.ejs");
+app.get("/posts/:id/edit", (req, res) => {
+  const { id } = req.params;
+  let post = posts.find((p) => p.id === id);
+  if (post) {
+    res.render("edit.ejs", { post });
+  } else {
+    res.render("error.ejs", { error: "Post not found" });
+  }
+});
+
+app.patch("/posts/:id", (req, res) => {
+  const { id } = req.params;
+  const { content } = req.body;
+  let post = posts.find((p) => p.id === id);
+  if (post) {
+    post.content = content;
+    res.redirect("/posts");
+  } else {
+    res.render("error.ejs", { error: "lala" });
+  }
 });
 
 app.listen(port, () => {

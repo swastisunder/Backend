@@ -108,25 +108,25 @@ Show a single post on its own page.
 
 Steps:
 
-1. Create `views/show.ejs` — this template will present full details of one post.
-2. Create a route `GET /posts/:id`:
+1. Create `views/show.ejs` — this template will present full details of one post.+
+2. Create a route `GET /posts/:id`: +
 
    - Extract `id` from `req.params`.
-   - Find the post in the `posts` array using `.find(p => p.id === id)`.
-   - If found, render `show.ejs` and pass that post object.
-   - If not found, send a “not found” message or redirect back.
+   - Find the post in the `posts` array using `.find(p => p.id === id)`.+
+   - If found, render `show.ejs` and pass that post object.+
+   - If not found, send a “not found” message or redirect back.+
 
-3. In `index.ejs`:
+3. In `index.ejs`: +
 
    - For each post include a “Show” link to `/posts/<id>` (replace `<id>` with the real id).
-   - That link should go to the show route so user can view details.
+   - That link should go to the show route so user can view details. +
 
-4. In `show.ejs` display:
+4. In `show.ejs` display:+
 
-   - username
-   - content
-   - id (optional)
-   - links for edit and delete (so user can next edit or delete from the show page too).
+   - username +
+   - content +
+   - id (optional) +
+   - links for edit and delete (so user can next edit or delete from the show page too). +
 
 ---
 
@@ -136,32 +136,32 @@ HTML forms can’t send PATCH directly, so use `method-override`.
 
 Steps:
 
-1. Install and configure `method-override` in `app.js`.
+1. Install and configure `method-override` in `app.js`. +
 
-   - This lets you use a query string like `?_method=PATCH` or a hidden form input `_method` to turn a normal POST into a PATCH on the server.
+   - This lets you use a query string like `? _method=PATCH` or a hidden form input `_method` to turn a normal POST into a PATCH on the server.+
 
-2. Create `views/edit.ejs` — an edit form similar to `new.ejs` but pre-filled with the post’s current data (username or content).
+2. Create `views/edit.ejs` — an edit form similar to `new.ejs` but pre-filled with the post’s current data (username or content).+
 
-   - The form should submit to `/posts/:id` and use method `POST`, but include `_method=PATCH` (either as query or hidden input) so server treats it as a PATCH.
+   - The form should submit to `/posts/:id` and use method `POST`, but include `_method=PATCH` (either as query or hidden input) so server treats it as a PATCH. +
 
-3. Create route `GET /posts/:id/edit`:
+3. Create route `GET /posts/:id/edit`: +
 
-   - Extract id from `req.params`.
-   - Find the post and render `edit.ejs`, sending the post data to pre-fill the form inputs.
+   - Extract id from `req.params`. +
+   - Find the post and render `edit.ejs`, sending the post data to pre-fill the form inputs. +
 
-4. Create route `PATCH /posts/:id`:
+4. Create route `PATCH /posts/:id`:+
 
-   - Extract id from `req.params`.
-   - Extract new content from `req.body`.
-   - Find the post in the `posts` array (use `.find`).
-   - Update the post’s content (and other fields if you allow username change).
-   - After update, `res.redirect('/posts')` (or `/`).
+   - Extract id from `req.params`.+
+   - Extract new content from `req.body`.+
+   - Find the post in the `posts` array (use `.find`).+
+   - Update the post’s content (and other fields if you allow username change).+
+   - After update, `res.redirect('/posts')` (or `/`).+
 
-5. In `index.ejs` add an “Edit” button/link for each post that goes to `/posts/:id/edit`.
+5. In `index.ejs` add an “Edit” button/link for each post that goes to `/posts/:id/edit`. +
 
 Notes:
 
-- Because the form posts to `/posts/:id?_method=PATCH` (or contains `_method` hidden field), method-override will make the request appear to Express as `PATCH`.
+- Because the form posts to `/posts/:id?_method=PATCH` (or contains `_method` hidden field), method-override will make the request appear to Express as `PATCH`. +
 
 ---
 
@@ -171,18 +171,18 @@ Delete will remove the post from the array.
 
 Steps:
 
-1. In `index.ejs` add a Delete button for each post:
+1. In `index.ejs` add a Delete button for each post: +
 
-   - Put the delete button inside a form whose action is `/posts/:id?_method=DELETE` and method is `POST`. method-override will convert it to DELETE.
+   - Put the delete button inside a form whose action is `/posts/:id?_method=DELETE` and method is `POST`. method-override will convert it to DELETE.+
 
-2. Create route `DELETE /posts/:id`:
+2. Create route `DELETE /posts/:id`:+
 
-   - Extract id from `req.params`.
-   - Use `.filter` to create a new array without that id (e.g., `posts = posts.filter(p => p.id !== id)`).
-   - Reassign the `posts` array with the filtered result.
-   - Redirect to `/posts`.
+   - Extract id from `req.params`. +
+   - Use `.filter` to create a new array without that id (e.g., `posts = posts.filter(p => p.id !== id)`). +
+   - Reassign the `posts` array with the filtered result. +
+   - Redirect to `/posts`. +
 
-3. Optionally ask user for a confirmation before deleting (client-side `confirm()`), but that’s extra.
+3. Optionally ask user for a confirmation before deleting (client-side `confirm()`), but that’s extra. +
 
 ---
 

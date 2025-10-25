@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Posts</title>
-    <link rel="stylesheet" href="/styles/posts.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
     <h1 class="heading">All Posts</h1>
@@ -15,9 +15,11 @@
         <p><%= post.content %></p>
 
         <div class="btn-group">
-          <a href="#" class="show-btn">Show</a>
-          <a href="#" class="edit-btn">Edit</a>
-          <a href="#" class="delete">Delete</a>
+          <a href="/posts/<%= post.id %>" class="show-btn">Show</a>
+          <a href="/posts/<%=post.id%>/edit" class="edit-btn">Edit</a>
+          <form action="/posts/<%=post.id%>?_method=DELETE" method="post">
+            <button>Delete</button>
+          </form>
         </div>
       </div>
       <% }) %>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <div class="edit-container">
+      <h1>Edit Post</h1>
+
+      <form
+        action="/posts/<%= post.id %>?_method=PATCH"
+        method="POST"
+        class="edit-form"
+      >
+        <a href="/posts" title="Close Form" class="close-btn">+</a>
+
+        <label>Username</label>
+        <input
+          type="text"
+          name="username"
+          value="<%= post.username %>"
+          readonly
+        />
+
+        <label>Content</label>
+        <textarea name="content"><%= post.content %></textarea>
+
+        <button type="submit" class="submit-btn">Update Post</button>
+      </form>
+    </div>
+  </body>
+</html>
