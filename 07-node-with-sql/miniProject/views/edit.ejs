@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Edit User</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="dark">
+    <main class="center-container">
+      <%- include('partials/navbar') %>
+      <div class="card form-card">
+        <h2>Edit Username</h2>
+        <form
+          action="/users/<%= user.id %>?_method=PATCH"
+          method="post"
+          class="form"
+        >
+          <label for="username">New Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value="<%= user.username %>"
+            required
+          />
+
+          <label for="password">Current Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+
+          <p><%=user.password%></p>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Update</button>
+            <a href="/users" class="btn ghost">Close</a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

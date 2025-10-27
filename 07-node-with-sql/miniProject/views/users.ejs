@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>All Users</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="dark">
+    <main class="center-container">
+      <%- include('partials/navbar') %>
+      <div class="page-header">
+        <h1>All Users</h1>
+        <a href="/users/new" class="btn primary">Add User</a>
+      </div>
+
+      <div class="users-grid">
+        <% users.forEach((user, index) => { %>
+        <div class="card user-card">
+          <div class="counter"><%= index + 1 %></div>
+          <h3><%= user.username %></h3>
+          <p class="muted"><%= user.email %></p>
+          <div class="card-actions">
+            <form action="/user/<%=user.id%>/edit" method="get" style="display:inline">
+              <button class="btn">Edit</button>
+            </form>
+            <form action="/users/<%=user.id%>?_method=DELETE" method="post" style="display:inline" onsubmit="return confirm('Delete this user?');">
+              <button class="btn ghost">Delete</button>
+            </form>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>
