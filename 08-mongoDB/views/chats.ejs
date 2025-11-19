@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Chats</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>All Chats</h1>
+      <div class="chat-list">
+        <% chats.forEach(chat => { %>
+        <div class="chat-item">
+          <div class="chat-info">
+            <div class="from-to"><%= chat.from %> → <%= chat.to %></div>
+            <div class="msg"><%= chat.msg %></div>
+            <div class="time">
+              <%= new Date(chat.created_at).toLocaleString() %>
+            </div>
+          </div>
+          <div class="actions">
+            <form action="/chats/<%=chat.id%>?_method=DELETE" method="post">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+            <form action="/chats/<%=chat.id%>/edit" method="get">
+              <button class="btn">Edit</button>
+            </form>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <form action="/chats/new" method="get">
+        <button class="add-btn">+</button>
+      </form>
+    </div>
+  </body>
+</html>

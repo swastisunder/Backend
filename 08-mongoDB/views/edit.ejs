@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Chat</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Edit Chat</h2>
+      <div class="form-container">
+        <a href="/chats" class="close-btn" title="Close">&times;</a>
+        <form action="/chats/<%= chat._id %>?_method=PUT" method="POST">
+          <div class="mb-2">
+            <label>From:</label>
+            <input type="text" value="<%= chat.from %>" disabled />
+          </div>
+
+          <div class="mb-2">
+            <label>To:</label>
+            <input type="text" value="<%= chat.to %>" disabled />
+          </div>
+
+          <div class="mb-3">
+            <label>Message:</label>
+            <textarea name="msg" required><%= chat.msg %></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-block">Update Message</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
